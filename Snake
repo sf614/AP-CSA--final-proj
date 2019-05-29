@@ -7,49 +7,55 @@ public class Snake{
     private ArrayList <Integer> y= new ArrayList <Integer> ();
     private int applex=40;
     private int appley=40;
+    private int direction=-1; //0=left, 1=right, 2=up, 3=down
     public Snake (){
         x.add(100);
         y.add(100);
     }
 
-  public void updateleft (){
-               for (int i=0;i<x.size();i++)
-		x.set (i,x.get(i)-20);
-    check();
-}
-public void updateright(){
-	 for (int i=0;i<x.size();i++)
-		x.set (i,x.get(i)+20);
- check();
-}
-public void updateup(){
-	 for (int i=0;i<y.size();i++)
-		y.set (i,y.get(i)-20);
-check();
-}
-public void updatedown(){
-	 for (int i=0;i<y.size();i++)
-		y.set (i,y.get(i)+20);
-check();
-}
+    public void updateleft (){
+        for (int i=0;i<x.size();i++)
+            x.set (i,x.get(i)-20);
+        check();
+    }
 
-public void check(){                   
-for (int i=0;i<x.size();i++){
+    public void updateright(){
+        for (int i=0;i<x.size();i++)
+            x.set (i,x.get(i)+20);
+        check();
+    }
+
+    public void updateup(){
+        for (int i=0;i<y.size();i++)
+            y.set (i,y.get(i)-20);
+        check();
+    }
+
+    public void updatedown(){
+        for (int i=0;i<y.size();i++)
+            y.set (i,y.get(i)+20);
+        check();
+    }
+
+    public void check(){                   
+        for (int i=0;i<x.size();i++){
             if (x.get(i)>=600||y.get (i)>=600)
                 gameover=true;         
         }
-for (int a=0;a<x.size();a++){
-	if (x.get(a)==applex && y.get(a)==appley){
-		x.add (x.get(x.size()-1)+20);
-		y.add (y.get(y.size()-1));
-		spawnapple();
-}
-}
-}
+        for (int a=0;a<x.size();a++){
+            if (x.get(a)==applex && y.get(a)==appley){
+                x.add (x.get(x.size()-1)+20);
+                y.add (y.get(y.size()-1));
+                spawnapple();
+            }
+        }
+    }
+
     public void spawnapple (){
         applex=  ((int) (30*Math.random()))*20;
-	appley= ((int) (30*Math.random()))*20;
+        appley= ((int) (30*Math.random()))*20;
     }
+
     public int getx(int a){
         return x.get (a);
     }
@@ -61,14 +67,20 @@ for (int a=0;a<x.size();a++){
     public int getlength(){
         return x.size();
     }
-public int getapplex (){
-	return applex;
-}
-public int getappley(){
-	return appley;
-}
-public boolean getgame(){
-return gameover;
-}
-}
 
+    public int getapplex (){
+        return applex;
+    }
+
+    public int getappley(){
+        return appley;
+    }
+
+    public boolean getgame(){
+        return gameover;
+    }
+
+    public void changedir(int x){
+        direction=x;
+    }
+}
