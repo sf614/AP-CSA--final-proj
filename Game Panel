@@ -20,33 +20,43 @@ public class GamePanel extends JPanel {
         for (int i=0;i<snake.getlength();i++){
             g.fillRect(snake.getx(i), snake.gety(i), HEIGHT, WIDTH);
         }
-       g.setColor (Color.RED);
-       g.fillRect (snake.getapplex(), snake.getappley(), HEIGHT, WIDTH);
+        g.setColor (Color.RED);
+        g.fillRect (snake.getapplex(), snake.getappley(), HEIGHT, WIDTH);
     }
     private class Listen extends KeyAdapter {
         @Override
         public void keyPressed(KeyEvent e){
-            if (e.getKeyCode() == KeyEvent.VK_LEFT)
+            if (e.getKeyCode() == KeyEvent.VK_LEFT){
                 key[0] = true;
-            else if (e.getKeyCode() == KeyEvent.VK_RIGHT)
+                snake.changedir(0);
+            }
+            else if (e.getKeyCode() == KeyEvent.VK_RIGHT){
                 key[1] = true;
-            else if (e.getKeyCode() == KeyEvent.VK_UP)
+                snake.changedir(1);
+            }
+            else if (e.getKeyCode() == KeyEvent.VK_UP){
                 key[2] = true;
-            else if (e.getKeyCode() == KeyEvent.VK_DOWN)
+                snake.changedir(2);
+            }
+            else if (e.getKeyCode() == KeyEvent.VK_DOWN){
                 key[3] = true;
-if (!snake.getgame()){
-           if (key[0])
-snake.updateleft();
-if (key[1])
-snake.updateright();
-if (key[2])
-snake.updateup();
-if (key[3])
-snake.updatedown(); 
-}
+                snake.changedir(3);
+            }
+            if (!snake.getgame()){
+                if (key[0])
+                    snake.updateleft();
+                if (key[1])
+                    snake.updateright();
+                if (key[2])
+                    snake.updateup();
+                if (key[3])
+                    snake.updatedown(); 
+            }else{
+                GameFrame.changelbl();
+            }
             repaint();
-       
-}
+
+        }
 
         @Override
         public void keyReleased(KeyEvent e){
@@ -58,6 +68,6 @@ snake.updatedown();
                 key[2] = false;
             else if (e.getKeyCode() == KeyEvent.VK_DOWN)
                 key[3] = false;
-}
- }
+        }
+    }
 }
