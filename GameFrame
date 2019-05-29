@@ -2,7 +2,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 public class GameFrame extends JFrame {   
- public GameFrame (){
+    private static JLabel lbl = new JLabel ("Start Playing!!");
+    public GameFrame (){
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setTitle( "SNAKE!!!" );
         setResizable( false );
@@ -10,9 +11,16 @@ public class GameFrame extends JFrame {
         jp.setPreferredSize( new Dimension( 600, 600 ) );
         jp.setLayout( null );
         getContentPane().add (jp);
+        lbl.setBounds (250, 500, 100, 100);
+        jp.add (lbl);
         pack();
     }
-     public void display() {
+
+    public static void changelbl(){
+        lbl.setText ("You Lose! :(");
+    }
+
+    public void display() {
         EventQueue.invokeLater(new Runnable() {
                 public void run() {
                     setVisible(true);
@@ -20,4 +28,3 @@ public class GameFrame extends JFrame {
             });
     }
 }
-
