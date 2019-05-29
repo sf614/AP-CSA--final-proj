@@ -6,19 +6,9 @@ public class GameFrame extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setTitle( "SNAKE!!!" );
         setResizable( false );
-        JPanel jp = new JPanel();
-        jp.setBackground( Color.GRAY );
-        jp.setPreferredSize( new Dimension( 700, 700 ) );
+        GamePanel jp = new GamePanel();
+        jp.setPreferredSize( new Dimension( 600, 600 ) );
         jp.setLayout( null );
         getContentPane().add (jp);
         pack();
     }
-
-   public void display() {
-        EventQueue.invokeLater(new Runnable() {
-                public void run() {
-                    setVisible(true);
-                }
-            });
-    }
-}
