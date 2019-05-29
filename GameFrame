@@ -12,3 +12,12 @@ public class GameFrame extends JFrame {
         getContentPane().add (jp);
         pack();
     }
+     public void display() {
+        EventQueue.invokeLater(new Runnable() {
+                public void run() {
+                    setVisible(true);
+                }
+            });
+    }
+}
+
